@@ -10,13 +10,12 @@ jobs:
       run: |
         curl --request POST \
           --url https://api.github.com/repos/simcha/issues \
-          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-          -H 'X-GitHub-Api-Version: 2022-11-28' \
-          -H 'Accept: application/vnd.github+json' \
-          --data "$(cat <<EOF
+          --header "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          -H "Accept: application/vnd.github+json" \
+          --data @- <<EOF
           {
             "title": "Automated issue for commit: ${{ github.sha }}",
             "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n The commit hash was: _${{ github.sha }}_."
           }
           EOF
-          )"
