@@ -34,3 +34,12 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project. simchaaaaaaaaaaa
+
+  deploy:
+   runs-on: ubuntu-latest
+   steps:
+      # Runs a single command using the runners shell
+      - name: deploy
+        run: echo deploy, world! simchaaaaaaaaaaaa
+
+   
